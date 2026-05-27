@@ -1,4 +1,23 @@
-import { createHash, randomUUID } from 'node:crypto';
+function randomId(prefix = 'id'): string {
+  const cryptoObj = globalThis.crypto;
+
+  if (cryptoObj?.randomUUID) {
+    return `${prefix}_${cryptoObj.randomId('id')}`;
+  }
+
+  if (cryptoObj?.getRandomValues) {
+    const bytes = new Uint8Array(16);
+    cryptoObj.getRandomValues(bytes);
+    return `${prefix}_${Array.from(bytes)
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('')}`;
+  }
+
+  // Demo fallback only. Not production-secure.
+  return `${prefix}_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+}
+
+
 
 export type SplitMode = 'char' | 'word' | 'token';
 
@@ -23,7 +42,7 @@ const tokenize = (text: string) => text.match(/\p{L}+|\p{N}+|\s+|[^\s\p{L}\p{N}]
 
 export function splitOriginalData(plaintext: string, splitMode: SplitMode): DataElement[] {
   const parts = splitMode === 'char' ? Array.from(plaintext) : splitMode === 'word' ? plaintext.split(/(\s+)/) : tokenize(plaintext);
-  return parts.filter((p) => p.length > 0).map((value, originalIndex) => ({ elementId: randomUUID(), value, originalIndex, isDecoy: false }));
+  return parts.filter((p) => p.length > 0).map((value, originalIndex) => ({ elementId: randomId('id'), value, originalIndex, isDecoy: false }));
 }
 
 export function generateCoordinateGrid(size: number) {
@@ -38,7 +57,7 @@ export function createScrambledArrangement(elements: DataElement[], grid: { rows
   const coordinates = shuffle(grid.rows.flatMap((r) => grid.columns.map((c) => `${r}${c}`)));
   const needed = elements.length + Math.floor(elements.length * decoyRatio);
   while (coordinates.length < needed) coordinates.push(`${grid.rows[0]}${grid.columns[0]}-${coordinates.length}`);
-  const decoys: DataElement[] = Array.from({ length: Math.floor(elements.length * decoyRatio) }, (_, i) => ({ elementId: randomUUID(), value: `decoy-${i}`, originalIndex: -1, isDecoy: true }));
+  const decoys: DataElement[] = Array.from({ length: Math.floor(elements.length * decoyRatio) }, (_, i) => ({ elementId: randomId('id'), value: `decoy-${i}`, originalIndex: -1, isDecoy: true }));
   const all = shuffle([...elements, ...decoys]);
   return all.map((element, i) => ({ coordinate: coordinates[i], elementId: element.elementId, value: element.value, isDecoy: element.isDecoy, originalIndex: element.originalIndex }));
 }
@@ -53,7 +72,7 @@ function hashFragments(blob: Omit<ServerFragmentBlob, 'fragmentHash'>): string {
 }
 
 export function protectData(input: { plaintext: string; splitMode: SplitMode; decoyRatio?: number; }) {
-  const contentId = randomUUID();
+  const contentId = randomId('content');
   const elements = splitOriginalData(input.plaintext, input.splitMode);
   const grid = generateCoordinateGrid(elements.length + Math.floor(elements.length * (input.decoyRatio ?? 0)));
   const arrangement = createScrambledArrangement(elements, grid, input.decoyRatio ?? 0);
