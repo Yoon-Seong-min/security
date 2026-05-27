@@ -2,7 +2,9 @@
   "name": "cosmos-lock-mvp",
   "private": true,
   "version": "0.1.0",
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "next dev apps/web",
     "build": "next build apps/web",
