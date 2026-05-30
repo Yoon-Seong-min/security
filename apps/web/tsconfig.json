@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2017", "lib": ["dom","dom.iterable","esnext"],
+    "allowJs": true, "skipLibCheck": true, "strict": false, "noEmit": true,
+    "incremental": true, "module": "esnext", "esModuleInterop": true,
+    "moduleResolution": "node", "resolveJsonModule": true, "isolatedModules": true,
+    "jsx": "preserve", "baseUrl": "../..",
+    "paths": {
+      "@cosmoslock/core": ["packages/cosmoslock-core/src"],
+      "@cosmoslock/vault": ["packages/cosmoslock-vault/src"],
+      "@cosmoslock/server": ["packages/cosmoslock-server/src"]
+    },
+    "plugins": [{"name": "next"}]
+  },
+  "include": ["next-env.d.ts",".next/types/**/*.ts","**/*.ts","**/*.tsx"],
+  "exclude": ["node_modules"]
+}
