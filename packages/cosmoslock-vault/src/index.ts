@@ -26,10 +26,19 @@ function fromB64(s: string): Uint8Array {
 }
 
 async function deriveKey(passphrase: string, salt: Uint8Array): Promise<CryptoKey> {
-  const keyMaterial = await crypto.subtle.importKey('raw', new TextEncoder().encode(passphrase), 'PBKDF2', false, ['deriveKey']);
+  const keyMaterial = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(passphrase) as unknown as ArrayBuffer,
+    'PBKDF2',
+    false,
+    ['deriveKey']
+  );
   return crypto.subtle.deriveKey(
-    { name: 'PBKDF2', salt, iterations: 200000, hash: 'SHA-256' },
-    keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']
+    { name: 'PBKDF2', salt: salt as unknown as ArrayBuffer, iterations: 200000, hash: 'SHA-256' },
+    keyMaterial,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['encrypt', 'decrypt']
   );
 }
 
@@ -37,24 +46,45 @@ export async function encryptCoordinateMap(contentId: string, map: UserCoordinat
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const key = await deriveKey(passphrase, salt);
-  const cipher = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify(map)));
-  return { contentId, encryptedCoordinateMap: toB64(new Uint8Array(cipher)), salt: toB64(salt), iv: toB64(iv), kdf: 'PBKDF2', cipher: 'AES-GCM', createdAt: new Date().toISOString(), ...(map.label ? { label: map.label } : {}) };
+  const cipher = await crypto.subtle.encrypt(
+    { name: 'AES-GCM', iv: iv as unknown as ArrayBuffer },
+    key,
+    new TextEncoder().encode(JSON.stringify(map)) as unknown as ArrayBuffer
+  );
+  return {
+    contentId,
+    encryptedCoordinateMap: toB64(new Uint8Array(cipher)),
+    salt: toB64(salt),
+    iv: toB64(iv),
+    kdf: 'PBKDF2',
+    cipher: 'AES-GCM',
+    createdAt: new Date().toISOString(),
+    ...(map.label ? { label: map.label } : {}),
+  };
 }
 
 export async function decryptCoordinateMap(record: EncryptedVaultRecord, passphrase: string): Promise<UserCoordinateMap> {
-  const key = await deriveKey(passphrase, fromB64(record.salt));
-  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: fromB64(record.iv) }, key, fromB64(record.encryptedCoordinateMap));
+  const salt = fromB64(record.salt);
+  const iv = fromB64(record.iv);
+  const key = await deriveKey(passphrase, salt);
+  const plain = await crypto.subtle.decrypt(
+    { name: 'AES-GCM', iv: iv as unknown as ArrayBuffer },
+    key,
+    fromB64(record.encryptedCoordinateMap) as unknown as ArrayBuffer
+  );
   return JSON.parse(new TextDecoder().decode(plain));
 }
 
 async function getDB() {
-  return openDB('cosmoslock-vault', 2, { upgrade(db, v) { if (v < 1) db.createObjectStore('records', { keyPath: 'contentId' }); } });
+  return openDB('cosmoslock-vault', 2, {
+    upgrade(db, v) { if (v < 1) db.createObjectStore('records', { keyPath: 'contentId' }); },
+  });
 }
 
-export async function saveToIndexedDB(record: EncryptedVaultRecord): Promise<void> { (await getDB()).put('records', record); }
+export async function saveToIndexedDB(record: EncryptedVaultRecord): Promise<void> { await (await getDB()).put('records', record); }
 export async function loadFromIndexedDB(contentId: string): Promise<EncryptedVaultRecord | undefined> { return (await getDB()).get('records', contentId); }
 export async function listFromIndexedDB(): Promise<EncryptedVaultRecord[]> { return (await getDB()).getAll('records'); }
-export async function deleteFromIndexedDB(contentId: string): Promise<void> { (await getDB()).delete('records', contentId); }
+export async function deleteFromIndexedDB(contentId: string): Promise<void> { await (await getDB()).delete('records', contentId); }
 
 export function exportVaultFile(record: EncryptedVaultRecord): string { return JSON.stringify(record, null, 2); }
 export function exportVaultBundle(records: EncryptedVaultRecord[]): string { return JSON.stringify({ version: '0.2', exportedAt: new Date().toISOString(), records }, null, 2); }
