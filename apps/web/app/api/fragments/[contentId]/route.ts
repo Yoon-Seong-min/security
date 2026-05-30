@@ -1,2 +1,4 @@
 import { getFragmentBlob } from '@cosmoslock/server';
-export async function GET(_: Request, { params }: { params: { contentId: string } }) { return Response.json(await getFragmentBlob(params.contentId)); }
+export async function GET(_: Request, event: any) {
+  return Response.json(await getFragmentBlob(event.params.contentId));
+}

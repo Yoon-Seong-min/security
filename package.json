@@ -6,10 +6,13 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "next dev apps/web",
+    "clean": "rm -rf apps/web/.next .next node_modules/.cache",
+    "dev": "npm run clean && next dev apps/web --hostname 0.0.0.0",
+    "dev:fast": "next dev apps/web --hostname 0.0.0.0",
     "build": "next build apps/web",
-    "start": "next start apps/web",
-    "test": "vitest run"
+    "start": "next start apps/web --hostname 0.0.0.0",
+    "test": "vitest run",
+    "check:crypto": "grep -R --line-number -E \"cryptoObj\\.randomId|\\.randomId\\(|node:crypto|from ['\\\"]crypto['\\\"]|require\\(['\\\"]crypto['\\\"]\\)\" packages apps tests || true"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

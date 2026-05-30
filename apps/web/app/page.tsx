@@ -1,2 +1,20 @@
+'use client';
 import Link from 'next/link';
-export default function Home() { return <main><h1>COSMOS LOCK Coordinate Vault MVP</h1><ul><li><Link href='/protect'>Protect</Link></li><li><Link href='/breach-simulation'>Breach Simulation</Link></li></ul></main>; }
+import { useTranslations } from '../components/LanguageProvider';
+
+export default function Home() {
+  const t = useTranslations();
+  return (
+    <main>
+      <h1>{t('appTitle')}</h1>
+      <ul>
+        <li>
+          <Link href='/protect'>{t('homeProtectLink')}</Link>
+        </li>
+        <li>
+          <Link href='/breach-simulation'>{t('homeBreachLink')}</Link>
+        </li>
+      </ul>
+    </main>
+  );
+}

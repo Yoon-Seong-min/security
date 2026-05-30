@@ -1,0 +1,1242 @@
+{
+  "content_e946ea67-07fd-4e6e-bfc6-df9abf1e4acf": {
+    "version": "0.1",
+    "contentId": "content_e946ea67-07fd-4e6e-bfc6-df9abf1e4acf",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B",
+        "C"
+      ],
+      "columns": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "fragments": [
+      {
+        "coordinate": "C2",
+        "elementId": "id_3492db4d-9d21-4d27-bf1c-4e1d359fbef6",
+        "value": "#",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A3",
+        "elementId": "id_953e762d-ef44-4163-99d1-b572d2ceaa33",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B1",
+        "elementId": "id_3b13cd08-6abf-4314-b47a-959acf05932b",
+        "value": "decoy-0",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B4",
+        "elementId": "id_83447ad4-d2d3-4f7e-9fa4-3bbe4335844b",
+        "value": "decoy-2",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "A1",
+        "elementId": "id_36e94e81-e203-4173-9bf9-c6fbd0b6c763",
+        "value": "7",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C4",
+        "elementId": "id_05766461-13e2-4e04-b115-dba6d2647d4c",
+        "value": "$",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B2",
+        "elementId": "id_dfef74a9-6ea7-4218-adf9-599b3a6f08a2",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A6",
+        "elementId": "id_6fabd023-053a-445e-a38a-4089e9bc72f0",
+        "value": "2",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A2",
+        "elementId": "id_1bde31b6-3325-4720-a804-851d921a140a",
+        "value": "4",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C3",
+        "elementId": "id_3cb39109-b05e-4a76-9cb4-b878a1ad5b02",
+        "value": "H",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B6",
+        "elementId": "id_7a806ef2-642b-4dd8-aa2c-d222d8aa082c",
+        "value": "F",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C1",
+        "elementId": "id_2971c5fb-829a-42bd-bbd5-d801ba1634e0",
+        "value": "D",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B3",
+        "elementId": "id_0391a811-9883-40f2-b898-3f0f035d7fc3",
+        "value": "S",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A4",
+        "elementId": "id_61b03d13-e846-4630-b0d8-6e9d888b5b40",
+        "value": "decoy-1",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "C6",
+        "elementId": "id_4b2ea91d-4eea-4256-9cfe-f979db8e1ae3",
+        "value": "D",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B5",
+        "elementId": "id_bdfccac3-dc4c-4b3c-baf7-97420be09ab2",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A5",
+        "elementId": "id_db73ac17-de51-4390-84ba-e812c2a988e2",
+        "value": "D",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C5",
+        "elementId": "id_5c32ad79-17f5-4f48-aee1-8af7ef0f9e95",
+        "value": "@",
+        "isDecoy": false
+      }
+    ],
+    "createdAt": "2026-05-28T15:46:04.142Z",
+    "fragmentHash": "74cffd7c4837797e5a2a972e5acf9c577dbb95208648119a26f30da7edb70f23"
+  },
+  "content_0df002c7-247f-4fac-b829-bef6b4d5aad2": {
+    "version": "0.1",
+    "contentId": "content_0df002c7-247f-4fac-b829-bef6b4d5aad2",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B",
+        "C"
+      ],
+      "columns": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "fragments": [
+      {
+        "coordinate": "A6",
+        "elementId": "id_82130bc2-1b38-459d-838e-3e372eed4bda",
+        "value": "decoy-0",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "A7",
+        "elementId": "id_f6a889ed-005a-4895-84d8-571f789b8b0a",
+        "value": "안",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A1",
+        "elementId": "id_5d8254df-6525-4afa-8c33-662f5614273e",
+        "value": "로",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C7",
+        "elementId": "id_d38de028-86a2-4de3-9aa0-22a2553ab769",
+        "value": "다",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B1",
+        "elementId": "id_84565402-911c-4faf-935d-47bd5ff48c1f",
+        "value": "보",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C5",
+        "elementId": "id_14f7ac49-c28e-4dc4-9849-78b414e72a2f",
+        "value": "decoy-3",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "C6",
+        "elementId": "id_e3487522-46cb-4b67-953e-171e2bb8068d",
+        "value": "것",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A3",
+        "elementId": "id_c44ddc19-da31-4351-a8bc-d1c6a607c949",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A8",
+        "elementId": "id_1aa16e71-4f84-4724-97de-aff7b6f9ba01",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C1",
+        "elementId": "id_9cef756e-4be2-4e7e-845e-c00bede1eff7",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A4",
+        "elementId": "id_198e5244-1ae2-45f2-8573-f17f845e5002",
+        "value": "세",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B5",
+        "elementId": "id_cd69981b-dd15-4381-b1a8-f14e34c1a051",
+        "value": "녕",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B3",
+        "elementId": "id_be2fc989-b641-4f04-8046-6aa347c3628c",
+        "value": "램",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C8",
+        "elementId": "id_98d06770-c335-45f6-80da-e7c21c49448a",
+        "value": "입",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B4",
+        "elementId": "id_24c51017-e796-4aa5-b970-3d6ff6e7ae1a",
+        "value": "그",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B7",
+        "elementId": "id_97529a5c-5a28-418d-b8c0-51ca821c2e42",
+        "value": "은",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C4",
+        "elementId": "id_d5ac7922-d628-45e2-8794-952081771470",
+        "value": "이",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B2",
+        "elementId": "id_62ac2fcd-1892-46fb-aa3a-f9123fdf9710",
+        "value": "decoy-2",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B8",
+        "elementId": "id_4c052a34-2c59-4340-9854-adb2b20cee52",
+        "value": "니",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C3",
+        "elementId": "id_39e21c04-f05d-424a-b0c0-c414bf117cda",
+        "value": "프",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A2",
+        "elementId": "id_b87939d7-e9d3-4e40-9141-28883b43d3ea",
+        "value": "요",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C2",
+        "elementId": "id_9dbec87d-2cbb-429f-93cf-9cfc0076a839",
+        "value": "안",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A5",
+        "elementId": "id_89368559-3ac6-4e3f-8512-71255a95b386",
+        "value": "하",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B6",
+        "elementId": "id_3ec3ff3f-d8e2-4f2e-8895-21e66a8a3175",
+        "value": "decoy-1",
+        "isDecoy": true
+      }
+    ],
+    "createdAt": "2026-05-28T15:46:23.285Z",
+    "fragmentHash": "7f9ac7bcc9eca2f5ab8b5a05ebf3c66c8a06579f4ac5460931f6bc9a9babfe71"
+  },
+  "content_7f1993f8-302c-49cc-811c-963fb0c3fbdc": {
+    "version": "0.1",
+    "contentId": "content_7f1993f8-302c-49cc-811c-963fb0c3fbdc",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B"
+      ],
+      "columns": [
+        1,
+        2
+      ]
+    },
+    "fragments": [],
+    "createdAt": "2026-05-28T15:46:29.789Z",
+    "fragmentHash": "7dd671ba6dc4fcbc69dd29a4fce468fe99d7dbefc34a0a7335763eb30861cb0c"
+  },
+  "content_a94b21ec-4e23-4085-8f0b-e3a832f900ad": {
+    "version": "0.1",
+    "contentId": "content_a94b21ec-4e23-4085-8f0b-e3a832f900ad",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B"
+      ],
+      "columns": [
+        1,
+        2
+      ]
+    },
+    "fragments": [],
+    "createdAt": "2026-05-28T15:46:30.973Z",
+    "fragmentHash": "ae08b104fd928e3367bed05f6d784b72da6a83936375f96effd2f96bbdf59f91"
+  },
+  "content_b01d1a46-188d-4712-b732-2dbc8b7046d7": {
+    "version": "0.1",
+    "contentId": "content_b01d1a46-188d-4712-b732-2dbc8b7046d7",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B"
+      ],
+      "columns": [
+        1,
+        2
+      ]
+    },
+    "fragments": [
+      {
+        "coordinate": "B2",
+        "elementId": "id_03b40864-3186-4db1-8490-9867d426f2a7",
+        "value": "ㄹ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B1",
+        "elementId": "id_c26eb282-12e1-4b0a-894f-91e72600b759",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A2",
+        "elementId": "id_22c8c90b-e0f9-42d0-be4d-1a74aa80dd45",
+        "value": "ㅇ",
+        "isDecoy": false
+      }
+    ],
+    "createdAt": "2026-05-28T15:46:38.269Z",
+    "fragmentHash": "e758045a4694c54c7202b0f05e8af3be79756b759d2237b16fefc4e6fb122e14"
+  },
+  "content_ab14b812-31f8-49f7-9ea4-5ead88e61574": {
+    "version": "0.1",
+    "contentId": "content_ab14b812-31f8-49f7-9ea4-5ead88e61574",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "columns": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    "fragments": [
+      {
+        "coordinate": "C2",
+        "elementId": "id_312b3b87-7bd7-47c8-8a53-fa70d76cf911",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B14",
+        "elementId": "id_b03e7646-8ae9-4a58-980c-1ca5709b6b57",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B2",
+        "elementId": "id_d59c3a68-cc2d-487f-9d19-780c57b776b7",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B12",
+        "elementId": "id_466199c2-ac43-46d6-8269-98372edec116",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A11",
+        "elementId": "id_fd7e4000-4279-4374-bfbb-925fa1dae4e8",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B11",
+        "elementId": "id_8de78588-20d1-4d15-b3ce-7d5f5a7fb5c5",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C7",
+        "elementId": "id_d45941da-bf88-4048-a288-5aa66ed33e99",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D3",
+        "elementId": "id_2d1fa48c-8648-4f6d-864e-563e4b9e3055",
+        "value": "decoy-9",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "E4",
+        "elementId": "id_6e33e3de-3e87-4095-8d7c-e44d16516528",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C3",
+        "elementId": "id_57deac33-ba96-4958-b22d-cb7863c52026",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A2",
+        "elementId": "id_85cbbeb0-8880-4fe2-83ab-793e9efda3fd",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A7",
+        "elementId": "id_6fc6fa23-f9a1-4b29-aa6f-3a427668c464",
+        "value": "ㄹ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C1",
+        "elementId": "id_4c69911d-0189-4467-9caa-36a380e548f7",
+        "value": "decoy-1",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "A6",
+        "elementId": "id_aada56fd-9c3a-442c-957b-bccbd42cc5b2",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B7",
+        "elementId": "id_377c1218-e3a4-4693-bd73-1d583010284b",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D12",
+        "elementId": "id_7f13ef16-92ba-49c9-8b65-f9cd0efb4c35",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D15",
+        "elementId": "id_f8586797-2eaa-4302-8fc2-910891f0167c",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D9",
+        "elementId": "id_27e02ef4-d32a-4cd9-8f11-cf817c04ed0b",
+        "value": "decoy-0",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "A8",
+        "elementId": "id_043745ea-649f-4496-951b-cde353852e82",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E10",
+        "elementId": "id_4f0b7796-f226-4dfe-991c-5a9cca255be3",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E12",
+        "elementId": "id_0c5e78db-e993-4ba3-94d5-812c2febe721",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E7",
+        "elementId": "id_8452b627-2038-4c0a-bf62-8396263d2e13",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B6",
+        "elementId": "id_805205bf-5ab9-4d96-b461-63b6560e7aa3",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B13",
+        "elementId": "id_be924afa-5e94-4af0-91df-00274830eb2e",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E3",
+        "elementId": "id_0aee2ad4-dd79-4ff2-9a0e-0427803548b9",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C9",
+        "elementId": "id_c9320244-ec4d-418a-8170-982710bc95e2",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D10",
+        "elementId": "id_036e4472-4ac3-4420-9dd5-af8ee246479a",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D7",
+        "elementId": "id_427a790c-8dfb-4070-9289-4e2047d0b22a",
+        "value": "decoy-3",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "A15",
+        "elementId": "id_2f0147f9-2bed-4010-9e62-5f325a1c8f39",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B3",
+        "elementId": "id_08dda536-f1c7-46ab-af0f-2227c61aa01c",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E11",
+        "elementId": "id_283b2deb-5f6b-4558-9bfe-c8da150446e3",
+        "value": "decoy-11",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B5",
+        "elementId": "id_25bfd217-07e8-4791-bd92-bc4d948d1dc4",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A5",
+        "elementId": "id_ac428052-454c-44f0-8de3-f2e3faf2622b",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D14",
+        "elementId": "id_56b40c07-85a0-44e8-a2f2-008dd360524e",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E8",
+        "elementId": "id_1f5515c1-b296-4498-b72f-64ea09acca9b",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B8",
+        "elementId": "id_aa968595-718d-4a4d-813a-8f6a5fdb1e24",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C5",
+        "elementId": "id_1fe17caf-d68a-45ac-a528-688b7a2092bc",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E9",
+        "elementId": "id_b9f552ca-7e69-439e-a869-74a79de73991",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E15",
+        "elementId": "id_7e02a2d3-5bf6-4c32-8b60-14bb7a626430",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E1",
+        "elementId": "id_43ade7e5-5858-44f4-9e0f-ad15510abfb7",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D2",
+        "elementId": "id_bf23b57b-e0a3-406e-9759-1417903a72f0",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E13",
+        "elementId": "id_a9cf89d4-f457-469b-8e3b-e1e12be82938",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C14",
+        "elementId": "id_2050618d-3b96-487c-a88c-d5ff20925ecc",
+        "value": "decoy-6",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "D1",
+        "elementId": "id_21c12044-2cd6-4279-9e61-e07991cc91de",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D5",
+        "elementId": "id_49cedde3-2f67-4c01-a26f-ba1eb4de1106",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C15",
+        "elementId": "id_264df5e5-98e8-4588-9b38-1f2e47ca92db",
+        "value": "ㄹ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A1",
+        "elementId": "id_251565f9-fab6-4fbb-b17c-4caa1feb36b8",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A12",
+        "elementId": "id_0070d015-09f7-4c44-9b0f-50748e5ea24f",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A10",
+        "elementId": "id_72d86022-1653-4755-94f1-b5a74435ccc6",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C4",
+        "elementId": "id_f341a92e-9ff9-4cfd-b6c5-8d00074c75f1",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E14",
+        "elementId": "id_e35107ce-c6cd-462e-b6cb-7e4ca93bb429",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D13",
+        "elementId": "id_f6d89da8-3985-4d07-8011-65c6b7cfc698",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C8",
+        "elementId": "id_1793549f-8dde-4f7d-8136-6877cf8a3ab1",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D8",
+        "elementId": "id_71340e7f-27d5-4af3-9b31-6eebc8fb5f07",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A13",
+        "elementId": "id_a74fa072-c73a-4d67-9a93-3208eeb331a4",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E6",
+        "elementId": "id_7f245f40-4541-4b58-ac5c-d95bfd6f497c",
+        "value": "decoy-10",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B15",
+        "elementId": "id_9d76e38a-2a3f-43f7-b766-b952035fe66c",
+        "value": "decoy-5",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "C6",
+        "elementId": "id_e971c3b4-a283-4aca-b811-e128311b0520",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B1",
+        "elementId": "id_5ec3fcae-4070-4093-8df8-d36548d5930d",
+        "value": "decoy-7",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "E5",
+        "elementId": "id_a3fffdb2-9ea7-4c8c-ac94-dae972d5cabb",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B10",
+        "elementId": "id_0d259af7-19b7-4ba9-a8d0-e5696de27938",
+        "value": "decoy-4",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "D4",
+        "elementId": "id_9cbede53-9d63-490b-ab90-50aadce7fb10",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C11",
+        "elementId": "id_63ad521c-3fea-4aac-a063-dbd0e32eb645",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A3",
+        "elementId": "id_b14a325f-2a76-42c6-9e94-6b7cee827fb7",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D11",
+        "elementId": "id_a542c818-df08-4a40-8015-2d46d598edf9",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C12",
+        "elementId": "id_95c2bcc5-3aa9-4023-a0b1-0f61b8e14a32",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A9",
+        "elementId": "id_712fb121-9bfe-4fbb-9cdf-bd6727a93825",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B9",
+        "elementId": "id_93f98735-19ae-49c7-854f-c77208af24bf",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "D6",
+        "elementId": "id_58f3c1fe-fc02-4f21-8c03-3359d515829a",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C10",
+        "elementId": "id_ddca3e23-1073-4f2f-8f02-e07bd7e00c08",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "E2",
+        "elementId": "id_a6659a5e-9d2e-42a6-8e41-d375bd5fd8d6",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A14",
+        "elementId": "id_65a969b4-c2f9-47e3-82b5-fc1f3d5c1290",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C13",
+        "elementId": "id_86db87d6-100b-4006-8fa1-9d73ff801319",
+        "value": "decoy-8",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B4",
+        "elementId": "id_4bc3f472-3321-428a-aec4-ace73ec822f0",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A4",
+        "elementId": "id_6541f21e-7c5c-4513-b170-89107d4bacc8",
+        "value": "decoy-2",
+        "isDecoy": true
+      }
+    ],
+    "createdAt": "2026-05-28T15:46:51.885Z",
+    "fragmentHash": "2d807290fc2429fb4fc01d4184050cf980f55276e5aab777c2dbf2d1b053dc53"
+  },
+  "content_c9dfad17-323d-4127-81c7-e84e6028f65a": {
+    "version": "0.1",
+    "contentId": "content_c9dfad17-323d-4127-81c7-e84e6028f65a",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B"
+      ],
+      "columns": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "fragments": [
+      {
+        "coordinate": "B8",
+        "elementId": "id_6b328c57-bca7-4792-8cfa-5fd715d63e01",
+        "value": "4",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B7",
+        "elementId": "id_3fc4cf32-fe23-43f7-8cad-10a01f2c7adf",
+        "value": "3",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B4",
+        "elementId": "id_73241ce4-839e-452d-b7c2-5dcf498025f3",
+        "value": "호",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B2",
+        "elementId": "id_63d84119-6b0b-4b0e-bf62-73b9a05a28c6",
+        "value": "4",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A3",
+        "elementId": "id_87363d01-5b07-492d-9751-2598da3eae4a",
+        "value": "4",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A6",
+        "elementId": "id_b34983b9-c214-4d7d-8020-cd32c305aad0",
+        "value": "decoy-1",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B3",
+        "elementId": "id_427087c0-6d22-4831-bf86-a3982e94ebbd",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A5",
+        "elementId": "id_b07483b0-04ee-451e-957d-a07044c54763",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A1",
+        "elementId": "id_5233ee15-1d5e-4909-ac34-36381e1e75f4",
+        "value": "4",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A4",
+        "elementId": "id_da4f667d-acbc-4bbe-b205-ba10aa9a29a9",
+        "value": "decoy-0",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B5",
+        "elementId": "id_eb0d27eb-1711-45df-a6cf-51552765a87f",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B6",
+        "elementId": "id_107c2aa8-aab3-4da4-b058-3cbb1355b3fe",
+        "value": "5",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B1",
+        "elementId": "id_2e00ae3f-439c-49d8-bc28-cdd10d4d0de0",
+        "value": "ㅎ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A8",
+        "elementId": "id_e6eaa76f-8997-49cb-9b80-e655686d5281",
+        "value": "ㅎ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A2",
+        "elementId": "id_15c0b21c-bc21-427d-baf4-8c99bc271b7c",
+        "value": "홀",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A7",
+        "elementId": "id_ec121b52-9c4e-4043-aac2-d6213328f383",
+        "value": "4",
+        "isDecoy": false
+      }
+    ],
+    "createdAt": "2026-05-28T15:56:34.206Z",
+    "fragmentHash": "228dd64645949afb538b735992c933d19712b715c9c29ef7ab50214e9d1570f5"
+  },
+  "content_4e3ea0bc-0001-4803-bc3b-63605b3451eb": {
+    "version": "0.1",
+    "contentId": "content_4e3ea0bc-0001-4803-bc3b-63605b3451eb",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B",
+        "C"
+      ],
+      "columns": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "fragments": [
+      {
+        "coordinate": "B3",
+        "elementId": "id_6eea339f-cb19-4d41-9ac3-78c1b521ca38",
+        "value": "고",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A9",
+        "elementId": "id_041901d8-0f1b-456c-8d6b-2c23a5183792",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B4",
+        "elementId": "id_53f2691f-8ab5-4fdc-9429-397e16235344",
+        "value": "윤",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A4",
+        "elementId": "id_293ed61d-ae9a-46ed-937b-90514316c4f7",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C7",
+        "elementId": "id_333b6887-b1b3-4d14-97fa-95592165ff42",
+        "value": "decoy-0",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "C9",
+        "elementId": "id_8226c590-aa51-4ca6-8195-840585264bc0",
+        "value": "이",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B6",
+        "elementId": "id_420c71f4-2ced-4dd5-b275-e758fd9ab94f",
+        "value": "트",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B2",
+        "elementId": "id_a71fc9d2-05fa-43be-ad4e-a84807622e7e",
+        "value": "최",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A8",
+        "elementId": "id_5187147a-62f4-4da5-a773-148ee90b36b2",
+        "value": "스",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A2",
+        "elementId": "id_dbe47594-cf83-49ea-b93e-83a9a00230f1",
+        "value": "민",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A5",
+        "elementId": "id_fee90418-3c60-43f3-bf07-d577368490d9",
+        "value": "decoy-1",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "C1",
+        "elementId": "id_d463a9a6-8f15-43c4-802e-564512f1d5c7",
+        "value": "성",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C4",
+        "elementId": "id_554a6dec-9762-4db8-9c47-b6ae2a4501d2",
+        "value": "는",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B1",
+        "elementId": "id_f1f6c333-1abf-40b7-92c4-ee8a9d6c2c13",
+        "value": "짱",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C5",
+        "elementId": "id_8fa31941-cf13-4abf-bca5-705aff91d1be",
+        "value": "decoy-3",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "A6",
+        "elementId": "id_99b558cb-5c63-4f33-a0c4-02b5c8ee2962",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B8",
+        "elementId": "id_4632826b-ca27-4b7d-9ea5-afbac3ed30b6",
+        "value": "decoy-2",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "C8",
+        "elementId": "id_a4e4fc45-9692-4686-8da7-5ada7bb52eb6",
+        "value": "다",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A7",
+        "elementId": "id_cfe3622b-8c7c-4301-ad8e-eb0e16eaba9f",
+        "value": "아",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A3",
+        "elementId": "id_4c5d2c39-1824-4bc7-97cd-935683d8cedd",
+        "value": " ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C2",
+        "elementId": "id_02d47ead-4883-44be-a230-217c16ef42c7",
+        "value": "조",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A1",
+        "elementId": "id_c1b59757-0f61-4770-a7fe-039b09638621",
+        "value": "의",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C3",
+        "elementId": "id_e274ec15-9627-4319-ae55-a489e3fa9c10",
+        "value": "아",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "C6",
+        "elementId": "id_bae67611-36a1-4eca-ab3a-58ad85c80c2a",
+        "value": "티",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B5",
+        "elementId": "id_89bcc4bc-10da-488e-a645-d35f190fe65d",
+        "value": "나",
+        "isDecoy": false
+      }
+    ],
+    "createdAt": "2026-05-28T16:18:05.661Z",
+    "fragmentHash": "ba3204989aeeea2be9892f28dd9ec36dbf4ecdd0ffec1267974b88da7e3b5881"
+  },
+  "content_cb3c5dfd-f222-4aed-b53d-f3d05badfa61": {
+    "version": "0.1",
+    "contentId": "content_cb3c5dfd-f222-4aed-b53d-f3d05badfa61",
+    "splitMode": "char",
+    "grid": {
+      "rows": [
+        "A",
+        "B"
+      ],
+      "columns": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "fragments": [
+      {
+        "coordinate": "B1",
+        "elementId": "id_996caec7-a86f-449d-831c-baef1079070a",
+        "value": "7",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B3",
+        "elementId": "id_6399c191-1168-407b-a0f7-622713a2e1c5",
+        "value": "6",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A1",
+        "elementId": "id_a493ef90-a287-4561-bffd-089c89c6e669",
+        "value": "ㅇ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A4",
+        "elementId": "id_0d5f46a4-5fb5-47ae-b428-24248d353457",
+        "value": "7",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A3",
+        "elementId": "id_8ac95188-53ba-403f-b772-43e02c653f2b",
+        "value": "4",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A5",
+        "elementId": "id_91a36eda-eb2f-40d4-8e9f-ef8be088701d",
+        "value": "ㅎ",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B4",
+        "elementId": "id_539fd3de-f85e-4746-919a-599f4a1bd27e",
+        "value": "휴",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "B2",
+        "elementId": "id_9168b4ee-a79c-4147-bc52-9ff0d9f6994c",
+        "value": "6",
+        "isDecoy": false
+      },
+      {
+        "coordinate": "A2",
+        "elementId": "id_7bc1ffcd-de09-4e36-8323-e75991c83852",
+        "value": "decoy-0",
+        "isDecoy": true
+      },
+      {
+        "coordinate": "B5",
+        "elementId": "id_d640ae69-55d2-4e2d-a9c4-d0d51d74c545",
+        "value": "ㄱ",
+        "isDecoy": false
+      }
+    ],
+    "createdAt": "2026-05-28T16:21:02.925Z",
+    "fragmentHash": "39d6c4d321a0dcb7f30f3cc8f9785ed1b0946eb9b7dd39b04c09d0ab288e3b5e"
+  }
+}

@@ -14,7 +14,13 @@ const fromB64 = (s: string) => new Uint8Array(Buffer.from(s, 'base64'));
 
 async function deriveKey(passphrase: string, salt: Uint8Array) {
   const keyMaterial = await cryptoApi.subtle.importKey('raw', enc.encode(passphrase), 'PBKDF2', false, ['deriveKey']);
-  return cryptoApi.subtle.deriveKey({ name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' }, keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+  return cryptoApi.subtle.deriveKey(
+    { name: 'PBKDF2', salt: salt as unknown as BufferSource, iterations: 100000, hash: 'SHA-256' },
+    keyMaterial,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['encrypt', 'decrypt'],
+  );
 }
 
 export async function encryptCoordinateMap(contentId: string, map: UserCoordinateMap, passphrase: string): Promise<EncryptedVaultRecord> {
