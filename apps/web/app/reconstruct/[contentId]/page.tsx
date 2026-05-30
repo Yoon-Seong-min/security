@@ -1,10 +1,10 @@
 'use client';
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { reconstructData } from '@cosmoslock/core';
 import { loadFromIndexedDB, decryptCoordinateMap, importVaultFile } from '@cosmoslock/vault';
 
-export default function ReconstructPage({ params }: { params: { contentId: string } }) {
-  const contentId = params.contentId;
+export default function ReconstructPage({ params }: { params: Promise<{ contentId: string }> }) {
+  const { contentId } = use(params);
   const [passphrase, setPassphrase] = useState('');
   const [plaintext, setPlaintext] = useState('');
   const [error, setError] = useState('');
