@@ -42,6 +42,17 @@ Then open `/protect`, `/breach-simulation`, `/reconstruct/[contentId]`.
 npm test
 ```
 
+## Troubleshooting: stale Next.js bundle / cryptoObj.randomId error
+If you see `cryptoObj.randomId is not a function` even after updating the SDK code, the browser or Next.js dev server may still be serving an old client bundle.
+
+1. Stop the running Next dev server completely (`Ctrl+C`).
+2. Run `npm run clean` from the repo root.
+3. Start the dev server again with `npm run dev`.
+4. Hard refresh the browser: `Cmd+Shift+R` or `Ctrl+Shift+R`.
+5. If the error persists, open browser devtools and clear site data before reconnecting.
+
+The root issue is that `packages/cosmoslock-core/src/index.ts` must call `crypto.randomUUID()` when available, not `cryptoObj.randomId('id')`.
+
 ## Known limitations
 - MVP PoC, not production audited.
 - Demo passphrase UX and local storage assumptions.

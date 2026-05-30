@@ -10,8 +10,8 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@cosmoslock/core": ["packages/cosmoslock-core/src"],
-      "@cosmoslock/vault": ["packages/cosmoslock-vault/src"],
+      "@cosmoslock/core":   ["packages/cosmoslock-core/src"],
+      "@cosmoslock/vault":  ["packages/cosmoslock-vault/src"],
       "@cosmoslock/server": ["packages/cosmoslock-server/src"]
     }
   },
