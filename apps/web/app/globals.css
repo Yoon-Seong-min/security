@@ -2,12 +2,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root { --font-mono: 'JetBrains Mono'; --font-sans: 'Space Grotesk'; }
 * { box-sizing: border-box; }
-body { background: #07080a; color: #c8d0e0; font-family: var(--font-sans), system-ui, sans-serif; min-height: 100vh; }
-::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #0f1117; } ::-webkit-scrollbar-thumb { background: #2a3040; border-radius: 3px; }
-.grid-bg { background-image: linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px); background-size: 32px 32px; }
-.glow-blue { box-shadow: 0 0 20px rgba(59,130,246,0.15),0 0 40px rgba(59,130,246,0.05); }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: #07080a;
+  color: #c8d0e0;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 4px; }
+::-webkit-scrollbar-track { background: #0f1117; }
+::-webkit-scrollbar-thumb { background: #2a3040; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Glow */
+.glow-blue { box-shadow: 0 0 20px rgba(59,130,246,0.15), 0 0 40px rgba(59,130,246,0.05); }
+.glow-green { box-shadow: 0 0 20px rgba(34,197,94,0.15); }
+
+/* Mono font */
 .mono { font-family: var(--font-mono), monospace; }
+
+/* Animations */
 @keyframes badge-pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
 .badge-live { animation: badge-pulse 2s ease-in-out infinite; }
+
+@keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+.shimmer {
+  background: linear-gradient(90deg,#1e2330 25%,#2a3040 50%,#1e2330 75%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+}
+
+/* Mobile: coordinate grid overflow fix */
+.coord-grid-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* Mobile: prevent text overflow */
+.break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
+
+/* Mobile: touch targets */
+@media (max-width: 768px) {
+  button, a { min-height: 40px; }
+  input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom */
+}
+
+/* Safe area for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  footer { padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); }
+}
