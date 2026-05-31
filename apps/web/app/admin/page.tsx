@@ -2,33 +2,109 @@
 import { useEffect, useState } from 'react';
 import { useT } from '../../components/LanguageProvider';
 import type { ServerFragmentBlob } from '@cosmoslock/core';
+
+// Admin credentials — change only via GitHub or Claude
+const ADMIN_ID = 'pertz';
+const ADMIN_PW = '15963';
+
 export default function AdminPage() {
   const t = useT();
+  const [authed, setAuthed] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
   const [blobs, setBlobs] = useState<ServerFragmentBlob[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState('');
+
+  // Check session
+  useEffect(() => {
+    if (sessionStorage.getItem('cl_admin') === 'ok') setAuthed(true);
+  }, []);
+
+  const handleLogin = () => {
+    if (userId === ADMIN_ID && password === ADMIN_PW) {
+      sessionStorage.setItem('cl_admin', 'ok');
+      setAuthed(true);
+      setLoginError('');
+    } else {
+      setLoginError(t('adminLoginError'));
+    }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('cl_admin');
+    setAuthed(false);
+    setUserId('');
+    setPassword('');
+  };
+
   const refresh = async () => {
     setLoading(true);
     try { const res = await fetch('/api/fragments'); const data = await res.json(); setBlobs(Array.isArray(data) ? data : []); }
     finally { setLoading(false); }
   };
-  useEffect(() => { refresh(); }, []);
+
+  useEffect(() => { if (authed) refresh(); }, [authed]);
+
   const handleClearAll = async () => {
     if (!confirm(t('adminClearConfirm'))) return;
     try { const res = await fetch('/api/admin', { method: 'DELETE' }); const data = await res.json(); if (data.ok) { setStatus(t('adminClearSuccess')); setBlobs([]); } }
     catch { setStatus('Error occurred'); }
   };
+
   const handleDeleteOne = async (contentId: string) => {
     if (!confirm(t('adminDeleteOneConfirm'))) return;
     await fetch(`/api/fragments/${contentId}`, { method: 'DELETE' }); refresh();
   };
+
+  // Login screen
+  if (!authed) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="bg-cosmos-surface border border-cosmos-border rounded-xl p-8 w-full max-w-sm space-y-6">
+          <div>
+            <h1 className="text-2xl font-bold text-cosmos-text">{t('adminLoginTitle')}</h1>
+            <p className="text-base text-cosmos-dim mt-1">{t('adminLoginDesc')}</p>
+          </div>
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm font-mono text-cosmos-dim block mb-2">{t('adminUserId')}</label>
+              <input value={userId} onChange={e => setUserId(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleLogin()}
+                className="w-full bg-cosmos-bg border border-cosmos-border rounded-lg px-4 py-2.5 text-base text-cosmos-text focus:outline-none focus:border-cosmos-accent transition-colors" />
+            </div>
+            <div>
+              <label className="text-sm font-mono text-cosmos-dim block mb-2">{t('adminPassword')}</label>
+              <input type="password" value={password} onChange={e => setPassword(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleLogin()}
+                className="w-full bg-cosmos-bg border border-cosmos-border rounded-lg px-4 py-2.5 text-base text-cosmos-text focus:outline-none focus:border-cosmos-accent transition-colors" />
+            </div>
+            {loginError && <div className="text-sm text-cosmos-danger font-mono">{loginError}</div>}
+            <button onClick={handleLogin}
+              className="w-full bg-cosmos-accent hover:bg-blue-500 text-white font-semibold rounded-lg py-3 text-base transition-colors">
+              {t('adminLoginBtn')}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-10">
-      <div>
-        <h1 className="text-3xl font-bold text-cosmos-text">{t('adminTitle')}</h1>
-        <p className="text-lg text-cosmos-dim mt-2">{t('adminDesc')}</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-cosmos-text">{t('adminTitle')}</h1>
+          <p className="text-lg text-cosmos-dim mt-1">{t('adminDesc')}</p>
+        </div>
+        <button onClick={handleLogout} className="text-sm font-mono text-cosmos-dim border border-cosmos-border hover:border-cosmos-danger hover:text-cosmos-danger rounded-lg px-4 py-2 transition-colors">
+          {t('adminLogout')}
+        </button>
       </div>
+
       {status && <div className="bg-green-900/20 border border-green-500/30 rounded-xl px-5 py-3 text-base font-mono text-cosmos-success">{status}</div>}
+
       <div className="bg-red-900/10 border border-red-500/30 rounded-xl p-6 space-y-4">
         <h2 className="text-lg font-bold text-cosmos-danger">{t('adminDanger')}</h2>
         <div className="flex items-center justify-between flex-wrap gap-4">
@@ -41,12 +117,13 @@ export default function AdminPage() {
           </button>
         </div>
       </div>
+
       <div className="bg-cosmos-surface border border-cosmos-border rounded-xl p-6 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold text-cosmos-text">{t('adminFragList')} ({blobs.length})</h2>
           <button onClick={refresh} className="text-sm font-mono text-cosmos-dim hover:text-cosmos-text border border-cosmos-border rounded px-3 py-1.5 transition-colors">↻ Refresh</button>
         </div>
-        {loading ? <div className="flex justify-center py-10"><div className="w-8 h-8 border-2 border-cosmos-accent border-t-transparent rounded-full animate-spin" /></div>
+        {loading ? <div className="flex justify-center py-10"><div className="w-8 h-8 border-2 border-cosmos-accent border-t-transparent rounded-full animate-spin"/></div>
         : blobs.length === 0 ? <div className="text-center py-10 text-base text-cosmos-dim">{t('adminNoFrags')}</div>
         : <div className="space-y-3">{blobs.map(blob => (
           <div key={blob.contentId} className="bg-cosmos-bg border border-cosmos-border rounded-xl p-4 flex items-start justify-between gap-4">
@@ -54,9 +131,10 @@ export default function AdminPage() {
               {blob.label && <div className="text-base font-semibold text-cosmos-text">{blob.label}</div>}
               <div className="text-sm font-mono text-cosmos-dim truncate mt-0.5">{blob.contentId}</div>
               <div className="text-xs font-mono text-cosmos-dim mt-1 flex flex-wrap gap-3">
-                <span>조각: {blob.fragments.length}개</span>
-                <span>실제: {blob.fragments.filter((f:any) => !f.isDecoy).length}개</span>
-                <span>디코이: {blob.fragments.filter((f:any) => f.isDecoy).length}개</span>
+                <span>Fragments: {blob.fragments.length}</span>
+                <span>Real: {blob.fragments.filter((f:any)=>!f.isDecoy).length}</span>
+                <span>Decoys: {blob.fragments.filter((f:any)=>f.isDecoy).length}</span>
+                <span>Mode: {blob.splitMode}</span>
                 <span>{new Date(blob.createdAt).toLocaleString()}</span>
               </div>
             </div>
