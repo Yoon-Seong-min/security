@@ -1,17 +1,46 @@
 'use client';
 import Link from 'next/link';
-import { useT } from '../components/LanguageProvider';
+import { useT, useLanguage } from '../components/LanguageProvider';
+
+const CLAIMS_EN = [
+  [1,  'Split data elements + random coordinate assignment'],
+  [2,  'Coordinate display means (rows × columns grid)'],
+  [3,  'Coordinate info encrypted (AES-GCM/PBKDF2)'],
+  [5,  'Data security method — full pipeline'],
+  [6,  'System: server=fragments, user=coordinates'],
+  [9,  'Syllable / word / token split modes'],
+  [11, 'Passphrase-authenticated reconstruction on request'],
+  [14, 'Full data security method with audit log'],
+];
+
+const CLAIMS_KO = [
+  [1,  '데이터 요소 분할 + 좌표 무작위 배치'],
+  [2,  '좌표 표시 수단 (행 × 열 그리드)'],
+  [3,  '좌표 정보 암호화 (AES-GCM/PBKDF2)'],
+  [5,  '데이터 보안 방법 — 전체 파이프라인'],
+  [6,  '시스템: 서버=조각, 사용자=좌표'],
+  [9,  '음절 / 단어 / 토큰 분할 모드'],
+  [11, '사용자 요청 시 패스프레이즈 인증 복원'],
+  [14, '감사 로그 포함 전체 데이터 보안 방법'],
+];
+
 export default function HomePage() {
   const t = useT();
+  const { language } = useLanguage();
+  const claims = language === 'ko' ? CLAIMS_KO : CLAIMS_EN;
+
   return (
     <div className="space-y-14">
       <div className="text-center space-y-5 pt-8">
         <div className="inline-flex items-center gap-2 border border-cosmos-border rounded-full px-5 py-2 text-sm font-mono text-cosmos-dim mb-4">
           <span className="w-2 h-2 rounded-full bg-cosmos-accent badge-live inline-block" />{t('homeBadge')}
         </div>
-        <h1 className="text-5xl font-bold tracking-tight text-cosmos-text leading-tight">{t('homeTitle1')}<br/><span className="text-cosmos-accent">{t('homeTitle2')}</span></h1>
+        <h1 className="text-5xl font-bold tracking-tight text-cosmos-text leading-tight">
+          {t('homeTitle1')}<br/><span className="text-cosmos-accent">{t('homeTitle2')}</span>
+        </h1>
         <p className="text-lg text-cosmos-dim max-w-2xl mx-auto leading-relaxed">{t('homeDesc')}</p>
       </div>
+
       <div className="bg-cosmos-surface border border-cosmos-border rounded-xl p-7 space-y-6">
         <h2 className="text-sm font-mono text-cosmos-dim uppercase tracking-widest">{t('homeArchTitle')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center">
@@ -43,6 +72,7 @@ export default function HomePage() {
           {t('homeBoth')} <span className="text-cosmos-success font-bold">{t('homeBothBold')}</span> {t('homeBothEnd')}
         </div>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <Link href="/protect" className="group bg-cosmos-surface border border-cosmos-border hover:border-cosmos-accent rounded-xl p-7 transition-all space-y-3">
           <div className="text-3xl">🔒</div>
@@ -60,19 +90,11 @@ export default function HomePage() {
           <div className="text-base text-cosmos-dim">{t('homeVaultDesc')}</div>
         </Link>
       </div>
+
       <div className="bg-cosmos-surface border border-cosmos-border rounded-xl p-7">
         <h2 className="text-sm font-mono text-cosmos-dim uppercase tracking-widest mb-5">{t('homeClaimsTitle')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm font-mono">
-          {[
-            [1,'데이터 요소 분할 + 좌표 무작위 배치'],
-            [2,'좌표 표시 수단 (행 × 열 그리드)'],
-            [3,'좌표 정보 암호화 (AES-GCM/PBKDF2)'],
-            [5,'데이터 보안 방법 — 전체 파이프라인'],
-            [6,'시스템: 서버=조각, 사용자=좌표'],
-            [9,'음절 / 단어 / 토큰 분할 모드'],
-            [11,'사용자 요청 시 패스프레이즈 인증 복원'],
-            [14,'감사 로그 포함 전체 데이터 보안 방법'],
-          ].map(([claim, desc]) => (
+          {claims.map(([claim, desc]) => (
             <div key={claim} className="flex items-start gap-2 py-2 border-b border-cosmos-border/50 last:border-0">
               <span className="mt-1 w-2 h-2 rounded-full flex-shrink-0 bg-cosmos-success" />
               <span className="text-cosmos-dim">Claim {claim}:</span>
