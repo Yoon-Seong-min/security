@@ -15,24 +15,13 @@ export default function ReconstructPage({ params }: { params: Promise<{ contentI
   const [sourceUsed, setSourceUsed] = useState<'indexeddb'|'file'|null>(null);
   const [importedFile, setImportedFile] = useState<any>(null);
 
-  const showPopup = (msg: string) => {
-    alert(msg);
-  };
-
-  const isPassphraseError = (msg: string) => {
-    return msg.toLowerCase().includes('decrypt') ||
-           msg.toLowerCase().includes('operation') ||
-           msg.toLowerCase().includes('failed') ||
-           msg.includes('OperationError') ||
-           msg.includes('The operation failed');
-  };
-
   const go = async (source: 'indexeddb'|'file') => {
     setError(''); setPlaintext(''); setLoading(true);
     try {
       const res = await fetch(`/api/fragments/${contentId}`);
-      if (!res.ok) throw new Error('Fragment blob not found on server');
+      if (!res.ok) throw new Error(language === 'ko' ? '서버에서 조각 블롭을 찾을 수 없습니다' : 'Fragment blob not found on server');
       const serverFragmentBlob = await res.json();
+
       let record;
       if (source === 'indexeddb') {
         record = await loadFromIndexedDB(contentId);
@@ -42,7 +31,25 @@ export default function ReconstructPage({ params }: { params: Promise<{ contentI
         record = importedFile;
       }
       setSourceUsed(source);
-      const userCoordinateMap = await decryptCoordinateMap(record, passphrase);
+
+      // Try decryption — wrong passphrase throws DOMException (OperationError)
+      let userCoordinateMap;
+      try {
+        userCoordinateMap = await decryptCoordinateMap(record, passphrase);
+      } catch (decryptErr: any) {
+        // DOMException from WebCrypto — always means wrong passphrase
+        const popupMsg = language === 'ko'
+          ? '❌ 패스프레이즈 불일치\n\n입력한 암호가 올바르지 않습니다.\n데이터 보호 시 사용한 패스프레이즈를 정확히 입력해 주세요.'
+          : '❌ Wrong Passphrase\n\nThe passphrase you entered is incorrect.\nPlease enter the exact passphrase used when protecting this data.';
+        alert(popupMsg);
+        setError(language === 'ko' ? '패스프레이즈가 올바르지 않습니다.' : 'Incorrect passphrase. Please try again.');
+        await fetch('/api/reconstruct-log', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ contentId, timestamp: new Date().toISOString(), success: false, reason: 'wrong passphrase' })
+        }).catch(() => {});
+        return;
+      }
+
       const { plaintext: pt } = reconstructData({ serverFragmentBlob, userCoordinateMap });
       setPlaintext(pt);
       await fetch('/api/reconstruct-log', {
@@ -50,20 +57,10 @@ export default function ReconstructPage({ params }: { params: Promise<{ contentI
         body: JSON.stringify({ contentId, timestamp: new Date().toISOString(), success: true, reason: `via ${source}` })
       });
     } catch (e: any) {
-      const msg = e.message ?? 'Unknown error';
-      // Wrong passphrase → show popup alert
-      if (isPassphraseError(msg) || msg.includes('OperationError')) {
-        const popupMsg = language === 'ko'
-          ? '❌ 패스프레이즈가 틀립니다\n\n입력한 암호가 올바르지 않습니다. 데이터 보호 시 사용한 패스프레이즈를 정확히 입력해 주세요.'
-          : '❌ Wrong Passphrase\n\nThe passphrase you entered is incorrect. Please enter the exact passphrase used when protecting this data.';
-        showPopup(popupMsg);
-        setError(language === 'ko' ? '패스프레이즈가 올바르지 않습니다.' : 'Incorrect passphrase.');
-      } else {
-        setError(msg);
-      }
+      setError(e.message ?? 'Unknown error');
       await fetch('/api/reconstruct-log', {
         method: 'POST', headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ contentId, timestamp: new Date().toISOString(), success: false, reason: msg })
+        body: JSON.stringify({ contentId, timestamp: new Date().toISOString(), success: false, reason: e.message ?? 'error' })
       }).catch(() => {});
     } finally { setLoading(false); }
   };
@@ -93,7 +90,8 @@ export default function ReconstructPage({ params }: { params: Promise<{ contentI
         <div>
           <label className="text-sm font-mono text-cosmos-dim block mb-2">{t('reconstructPassLabel')}</label>
           <input
-            type="password" value={passphrase} onChange={e => setPassphrase(e.target.value)}
+            type="password" value={passphrase}
+            onChange={e => setPassphrase(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && passphrase && go('indexeddb')}
             placeholder={t('reconstructPassPlaceholder')}
             className="w-full bg-cosmos-bg border border-cosmos-border rounded-lg px-4 py-3 text-base text-cosmos-text placeholder:text-cosmos-dim/50 focus:outline-none focus:border-cosmos-accent transition-colors"
