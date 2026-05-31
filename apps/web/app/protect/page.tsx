@@ -8,7 +8,7 @@ export default function ProtectPage() {
   const t = useT();
   const [step, setStep] = useState<Step>('input');
   const [plaintext, setPlaintext] = useState('');
-  const [splitMode, setSplitMode] = useState<SplitMode>('char');
+  const [splitMode, setSplitMode] = useState<SplitMode>('syllable'); // DEFAULT: syllable
   const [decoyRatio, setDecoyRatio] = useState(0.2);
   const [passphrase, setPassphrase] = useState('');
   const [label, setLabel] = useState('');
@@ -21,8 +21,8 @@ export default function ProtectPage() {
   const [decoyCount, setDecoyCount] = useState(0);
   const [highlightReal, setHighlightReal] = useState(false);
   const handleProtect = useCallback(async () => {
-    if (!plaintext.trim()) { setError(t('protectDataLabel')); return; }
-    if (!passphrase) { setError(t('protectPassLabel')); return; }
+    if (!plaintext.trim()) { setError('Enter data to protect.'); return; }
+    if (!passphrase) { setError('Enter a passphrase.'); return; }
     setError(''); setStep('processing');
     try {
       const { serverFragmentBlob, userCoordinateMap } = protectData({ plaintext, splitMode, decoyRatio, label: label||undefined });
@@ -40,7 +40,7 @@ export default function ProtectPage() {
       setDecoyCount(cells.filter(c=>c.isDecoy).length);
       setVaultRecord(encrypted); setStep('done');
     } catch(e:any) { setError(e.message??'Error'); setStep('input'); }
-  }, [plaintext,splitMode,decoyRatio,passphrase,label,t]);
+  }, [plaintext,splitMode,decoyRatio,passphrase,label]);
   return (
     <div className="space-y-10">
       <div>
@@ -66,7 +66,10 @@ export default function ProtectPage() {
                 <label className="text-sm font-mono text-cosmos-dim block mb-2">{t('protectSplitLabel')}</label>
                 <select value={splitMode} onChange={e=>setSplitMode(e.target.value as SplitMode)}
                   className="w-full bg-cosmos-bg border border-cosmos-border rounded-lg px-4 py-2.5 text-base text-cosmos-text focus:outline-none focus:border-cosmos-accent">
-                  <option value="char">{t('protectChar')}</option><option value="word">{t('protectWord')}</option><option value="token">{t('protectToken')}</option>
+                  <option value="syllable">⭐ {t('protectSyllable')}</option>
+                  <option value="char">{t('protectChar')}</option>
+                  <option value="word">{t('protectWord')}</option>
+                  <option value="token">{t('protectToken')}</option>
                 </select>
               </div>
               <div>
@@ -88,12 +91,16 @@ export default function ProtectPage() {
           </div>
           <div className="bg-cosmos-surface border border-cosmos-border rounded-xl p-6 space-y-5">
             <h3 className="text-sm font-mono text-cosmos-dim uppercase tracking-widest">{t('protectWhat')}</h3>
-            {[['01',t('protectStep1')],['02',t('protectStep2')],['03',t('protectStep3')],['04',t('protectStep4')],['05',t('protectStep5')]].map(([s,d])=>(
+            {(['01','02','03','04','05'] as const).map((s,i)=>(
               <div key={s} className="flex items-start gap-3">
                 <span className="text-sm font-mono text-cosmos-accent flex-shrink-0 mt-0.5">{s}</span>
-                <span className="text-base text-cosmos-dim">{d}</span>
+                <span className="text-base text-cosmos-dim">{[t('protectStep1'),t('protectStep2'),t('protectStep3'),t('protectStep4'),t('protectStep5')][i]}</span>
               </div>
             ))}
+            <div className="mt-4 bg-cosmos-bg border border-cosmos-border rounded-lg p-4">
+              <div className="text-xs font-mono text-cosmos-accent mb-2">⭐ {t('protectSyllable')}</div>
+              <div className="text-sm text-cosmos-dim">Korean: 가→나→다 (1 syllable = 1 unit)<br/>English: a→b→c (1 char = 1 unit)<br/>Maximum security for mixed text</div>
+            </div>
           </div>
         </div>
       )}
