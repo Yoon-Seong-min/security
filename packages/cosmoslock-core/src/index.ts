@@ -1,16 +1,25 @@
-export type SplitMode = 'char' | 'word' | 'token';
+export type SplitMode = 'syllable' | 'char' | 'word' | 'token';
 
 export interface ServerFragmentBlob {
-  version: '0.2'; contentId: string; splitMode: SplitMode;
+  version: '0.2';
+  contentId: string;
+  splitMode: SplitMode;
   grid: { rows: string[]; columns: number[] };
   fragments: Array<{ coordinate: string; elementId: string; value: string; isDecoy: boolean }>;
-  fragmentHash: string; createdAt: string; label?: string;
+  fragmentHash: string;
+  createdAt: string;
+  label?: string;
 }
 
 export interface UserCoordinateMap {
-  version: '0.2'; contentId: string; splitMode: SplitMode; originalLength: number;
+  version: '0.2';
+  contentId: string;
+  splitMode: SplitMode;
+  originalLength: number;
   reconstructionSequence: Array<{ originalIndex: number; coordinate: string; elementId: string }>;
-  serverFragmentHash: string; createdAt: string; label?: string;
+  serverFragmentHash: string;
+  createdAt: string;
+  label?: string;
 }
 
 export interface ValidationResult { valid: boolean; reason?: string; }
@@ -26,32 +35,45 @@ const ROWS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const tokenize = (t: string) => t.match(/\p{L}+|\p{N}+|\s+|[^\s\p{L}\p{N}]/gu) ?? [];
 
 export function splitData(plaintext: string, mode: SplitMode) {
-  const parts = mode==='char' ? Array.from(plaintext) : mode==='word' ? plaintext.split(/(\s+)/) : tokenize(plaintext);
-  return parts.filter(p=>p.length>0).map((value,originalIndex)=>({ elementId: randomId('id'), value, originalIndex, isDecoy: false }));
+  let parts: string[];
+  if (mode === 'syllable') {
+    // Korean syllable / single char split — handles Unicode properly
+    // Each Korean syllable block (가나다...) = 1 unit, ASCII = 1 char
+    parts = Array.from(plaintext);
+  } else if (mode === 'char') {
+    parts = Array.from(plaintext);
+  } else if (mode === 'word') {
+    parts = plaintext.split(/(\s+)/);
+  } else {
+    parts = tokenize(plaintext);
+  }
+  return parts.filter(p => p.length > 0).map((value, originalIndex) => ({
+    elementId: randomId('id'), value, originalIndex, isDecoy: false
+  }));
 }
 
 export function generateGrid(totalSlots: number) {
-  const rowCount = Math.max(2, Math.ceil(Math.sqrt(totalSlots/2)));
-  const colCount = Math.max(2, Math.ceil(totalSlots/rowCount));
-  return { rows: ROWS.slice(0,rowCount), columns: Array.from({length:colCount},(_,i)=>i+1) };
+  const rowCount = Math.max(2, Math.ceil(Math.sqrt(totalSlots / 2)));
+  const colCount = Math.max(2, Math.ceil(totalSlots / rowCount));
+  return { rows: ROWS.slice(0, rowCount), columns: Array.from({ length: colCount }, (_, i) => i + 1) };
 }
 
 function shuffle<T>(arr: T[]): T[] {
-  const a=[...arr];
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a;
 }
 
 export function scramble(elements: Array<{elementId:string;value:string;originalIndex:number;isDecoy:boolean}>, grid:{rows:string[];columns:number[]}, decoyRatio=0.2) {
-  const coords = shuffle(grid.rows.flatMap(r=>grid.columns.map(c=>`${r}${c}`)));
+  const coords = shuffle(grid.rows.flatMap(r => grid.columns.map(c => `${r}${c}`)));
   const decoys = Array.from({length:Math.floor(elements.length*decoyRatio)},(_,i)=>({elementId:randomId('id'),value:`decoy-${i}`,originalIndex:-1,isDecoy:true}));
   const all = shuffle([...elements,...decoys]);
-  while(coords.length<all.length) coords.push(`${grid.rows[0]}${grid.columns[0]}-${coords.length}`);
-  return all.map((el,i)=>({coordinate:coords[i],elementId:el.elementId,value:el.value,isDecoy:el.isDecoy,originalIndex:el.originalIndex}));
+  while (coords.length < all.length) coords.push(`${grid.rows[0]}${grid.columns[0]}-${coords.length}`);
+  return all.map((el,i) => ({coordinate:coords[i],elementId:el.elementId,value:el.value,isDecoy:el.isDecoy,originalIndex:el.originalIndex}));
 }
 
 export function buildCoordinateMap(arrangement:ReturnType<typeof scramble>,contentId:string,splitMode:SplitMode,fragmentHash:string,label?:string):UserCoordinateMap {
-  const seq=arrangement.filter(x=>!x.isDecoy).sort((a,b)=>a.originalIndex-b.originalIndex);
+  const seq = arrangement.filter(x=>!x.isDecoy).sort((a,b)=>a.originalIndex-b.originalIndex);
   return {version:'0.2',contentId,splitMode,originalLength:seq.length,reconstructionSequence:seq.map(x=>({originalIndex:x.originalIndex,coordinate:x.coordinate,elementId:x.elementId})),serverFragmentHash:fragmentHash,createdAt:new Date().toISOString(),...(label?{label}:{})};
 }
 
@@ -97,21 +119,21 @@ export function validateIntegrity(blob:ServerFragmentBlob):ValidationResult {
 }
 
 export function validateInputs(input:{serverFragmentBlob?:ServerFragmentBlob;userCoordinateMap?:UserCoordinateMap}):ValidationResult {
-  if(!input.serverFragmentBlob) return{valid:false,reason:'Missing server fragment blob.'};
-  if(!input.userCoordinateMap) return{valid:false,reason:'Missing user coordinate map.'};
-  if(input.serverFragmentBlob.contentId!==input.userCoordinateMap.contentId) return{valid:false,reason:'Content ID mismatch.'};
-  if(input.serverFragmentBlob.fragmentHash!==input.userCoordinateMap.serverFragmentHash) return{valid:false,reason:'Hash mismatch.'};
+  if(!input.serverFragmentBlob)return{valid:false,reason:'Missing server fragment blob.'};
+  if(!input.userCoordinateMap)return{valid:false,reason:'Missing user coordinate map.'};
+  if(input.serverFragmentBlob.contentId!==input.userCoordinateMap.contentId)return{valid:false,reason:'Content ID mismatch.'};
+  if(input.serverFragmentBlob.fragmentHash!==input.userCoordinateMap.serverFragmentHash)return{valid:false,reason:'Hash mismatch.'};
   return validateIntegrity(input.serverFragmentBlob);
 }
 
 export function reconstructData(input:{serverFragmentBlob:ServerFragmentBlob;userCoordinateMap:UserCoordinateMap}):{plaintext:string} {
   const check=validateInputs(input);
-  if(!check.valid) throw new Error(check.reason);
+  if(!check.valid)throw new Error(check.reason);
   const fragIndex=new Map(input.serverFragmentBlob.fragments.map(f=>[f.coordinate,f]));
   const pieces=input.userCoordinateMap.reconstructionSequence.sort((a,b)=>a.originalIndex-b.originalIndex).map(seq=>{
     const frag=fragIndex.get(seq.coordinate);
-    if(!frag) throw new Error(`Missing fragment at ${seq.coordinate}`);
-    if(frag.elementId!==seq.elementId) throw new Error(`Element mismatch at ${seq.coordinate}`);
+    if(!frag)throw new Error(`Missing fragment at ${seq.coordinate}`);
+    if(frag.elementId!==seq.elementId)throw new Error(`Element mismatch at ${seq.coordinate}`);
     return frag.value;
   });
   return{plaintext:pieces.join('')};
