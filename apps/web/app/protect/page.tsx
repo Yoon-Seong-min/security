@@ -99,7 +99,7 @@ export default function ProtectPage() {
             ))}
             <div className="mt-4 bg-cosmos-bg border border-cosmos-border rounded-lg p-4">
               <div className="text-xs font-mono text-cosmos-accent mb-2">⭐ {t('protectSyllable')}</div>
-              <div className="text-sm text-cosmos-dim">Korean: 가→나→다 (1 syllable = 1 unit)<br/>English: a→b→c (1 char = 1 unit)<br/>Maximum security for mixed text</div>
+              <div className="text-sm text-cosmos-dim">Korean: 가→나→다 (1 syllable = 1 unit)<br/>English: a→b→c (1 char = 1 unit)<br/>Lower semantic exposure than word-level splitting for mixed-language text</div>
             </div>
           </div>
         </div>
